@@ -310,16 +310,16 @@ main {
   font-size: 0.8em;
   padding: 8px;
   border-radius: 4px;
-  background: #222;
+  background: transparent;
   border: 1px solid #444;
   transition: all 0.2s;
 }
 .prompt-options button.active {
   background: #00aef0;
-  border-color: #fff;
+  border-color: #00aef0;
   color: #fff;
 }
-.prompt-options button:hover {
+.prompt-options button:hover:not(.active) {
   background: #333;
 }
 .notable-work-image {
@@ -411,6 +411,14 @@ main {
   align-items: center;
   justify-content: center;
   gap: 20px;
+}
+.startButton .icon {
+  font-size: 80px;
+  color: #888;
+  transition: color 0.2s;
+}
+.startButton:hover .icon {
+  color: #fff;
 }
 .shutter {
   background: #000000b3;
@@ -516,7 +524,9 @@ main {
 .results li {
   aspect-ratio: 1;
   height: 100%;
-  transition: opacity 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.2s ease-in-out;
   position: relative;
 }
 .results li .emoji {
@@ -537,6 +547,8 @@ main {
 }
 .results li:hover {
   opacity: 1 !important;
+  transform: scale(1.05);
+  z-index: 10;
 }
 .results li:hover .deleteBtn {
   scale: 1;
@@ -658,12 +670,15 @@ main {
   background: #00aef0;
   border: 2px solid #fff;
   color: #fff;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  box-shadow:
+    0 0 5px #00aef0,
+    0 0 10px #00aef0;
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 5px;
   white-space: nowrap;
   margin-left: auto;
+  animation: glow 2s infinite ease-in-out;
 }
 @keyframes shimmer {
   0% {
@@ -671,6 +686,19 @@ main {
   }
   to {
     background-position: 200% 0;
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px #00aef0,
+      0 0 10px #00aef0;
+  }
+  50% {
+    box-shadow:
+      0 0 15px #00aef0,
+      0 0 25px #00aef0;
   }
 }
 footer {

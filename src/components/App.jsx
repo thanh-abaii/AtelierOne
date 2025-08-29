@@ -267,7 +267,7 @@ export default function App() {
             {didJustSnap && <div className="flash" />}
             {!videoActive && (
               <button className="startButton" onClick={startVideo}>
-                <h1>📸 GemBooth</h1>
+                <span className="icon">photo_camera</span>
                 <p>
                   {didInitVideo ? 'One sec…' : 'Tap anywhere to start webcam'}
                 </p>
@@ -363,7 +363,13 @@ export default function App() {
             onClick={makeGif}
             disabled={gifInProgress}
           >
-            {gifInProgress ? 'One sec…' : 'Make GIF!'}
+            {gifInProgress ? (
+              'One sec…'
+            ) : (
+              <>
+                <span className="icon">movie</span> Make GIF!
+              </>
+            )}
           </button>
         )}
       </div>
