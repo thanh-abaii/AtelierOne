@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
 */
-import {useRef, useState} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import c from 'clsx'
 import {
   snapPhoto,
@@ -38,9 +38,22 @@ export default function App() {
   const [didJustSnap, setDidJustSnap] = useState(false)
   const [showCustomPrompt, setShowCustomPrompt] = useState(false)
   const [showInfoPanels, setShowInfoPanels] = useState(true)
+  const [zoomState, setZoomState] = useState({scale: 1, x: 0, y: 0})
+  const [isPanning, setIsPanning] = useState(false)
+  const [panStart, setPanStart] = useState({x: 0, y: 0})
   const videoRef = useRef(null)
 
   const currentArtist = getArtist(activeMode)
+
+  useEffect(() => {
+    if (!focusedId) {
+      setTimeout(() => {
+        setZoomState({scale: 1, x: 0, y: 0})
+      }, 300)
+    } else {
+      setZoomState({scale: 1, x: 0, y: 0})
+    }
+  }, [focusedId])
 
   const startVideo = async () => {
     setDidInitVideo(true)
@@ -112,6 +125,46 @@ export default function App() {
     setShowInfoPanels(true) // Show panels when a new artist is selected
   }
 
+  const handleCloseFocused = () => {
+    if (gifUrl) {
+      hideGif()
+    } else {
+      setFocusedId(null)
+    }
+  }
+
+  const handleWheel = e => {
+    if (gifUrl) return
+    e.preventDefault()
+    const {deltaY} = e
+    const scaleAmount = -deltaY * 0.005
+    setZoomState(prev => {
+      const newScale = Math.max(1, prev.scale + scaleAmount)
+      return {...prev, scale: newScale}
+    })
+  }
+
+  const handleMouseDown = e => {
+    if (gifUrl || zoomState.scale <= 1) return
+    e.preventDefault()
+    setIsPanning(true)
+    setPanStart({x: e.clientX - zoomState.x, y: e.clientY - zoomState.y})
+  }
+
+  const handleMouseMove = e => {
+    if (!isPanning) return
+    e.preventDefault()
+    setZoomState(prev => ({
+      ...prev,
+      x: e.clientX - panStart.x,
+      y: e.clientY - panStart.y
+    }))
+  }
+
+  const handleMouseUp = () => {
+    setIsPanning(false)
+  }
+
   return (
     <main>
       <div className="header-container">
@@ -162,8 +215,7 @@ export default function App() {
         </div>
         <div className="center-column">
           <div
-            className="video-container"
-            onClick={() => (gifUrl ? hideGif() : setFocusedId(null))}
+            className={c('video-container', {focused: focusedId || gifUrl})}
           >
             {showCustomPrompt && (
               <div className="customPrompt">
@@ -214,30 +266,6 @@ export default function App() {
                 <button onClick={takePhoto} className="shutter">
                   <span className="icon">camera</span>
                 </button>
-              </div>
-            )}
-
-            {(focusedId || gifUrl) && (
-              <div className="focusedPhoto" onClick={e => e.stopPropagation()}>
-                <button
-                  className="circleBtn"
-                  onClick={() => (gifUrl ? hideGif() : setFocusedId(null))}
-                >
-                  <span className="icon">close</span>
-                </button>
-                <img
-                  src={gifUrl || imageData.outputs[focusedId]}
-                  alt="photo"
-                  draggable={false}
-                />
-                {gifUrl && (
-                  <button
-                    className="button downloadButton"
-                    onClick={downloadGif}
-                  >
-                    Download
-                  </button>
-                )}
               </div>
             )}
           </div>
@@ -326,6 +354,46 @@ export default function App() {
           </button>
         )}
       </div>
+
+      {(focusedId || gifUrl) && (
+        <div
+          className="focusedPhoto-overlay"
+          onClick={handleCloseFocused}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+        >
+          <div
+            className="focusedPhoto"
+            onClick={e => e.stopPropagation()}
+            onWheel={handleWheel}
+          >
+            <button className="circleBtn" onClick={handleCloseFocused}>
+              <span className="icon">close</span>
+            </button>
+            <img
+              src={gifUrl || imageData.outputs[focusedId]}
+              alt="photo"
+              draggable={false}
+              onMouseDown={handleMouseDown}
+              style={{
+                transform: `scale(${zoomState.scale}) translate(${zoomState.x /
+                  zoomState.scale}px, ${zoomState.y / zoomState.scale}px)`,
+                cursor: isPanning
+                  ? 'grabbing'
+                  : zoomState.scale > 1 && !gifUrl
+                  ? 'grab'
+                  : 'default'
+              }}
+            />
+            {gifUrl && (
+              <button className="button downloadButton" onClick={downloadGif}>
+                Download
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   )
 }
