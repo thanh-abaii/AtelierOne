@@ -168,7 +168,20 @@ export default function App() {
   return (
     <main>
       <div className="header-container">
-        <h1>AtelierOne</h1>
+        <div className="header-title">
+          <h1>AtelierOne</h1>
+          <a
+            href="https://blog.uncledao.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://www.uncledao.com/img/und_logo_black_bg.png"
+              alt="Uncle Dao Logo"
+              className="header-logo"
+            />
+          </a>
+        </div>
         <div className="header-controls">
           <button onClick={() => setShowInfoPanels(!showInfoPanels)}>
             <span className="icon">
@@ -394,6 +407,19 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <footer>
+        <p>
+          @2025 Vibe Coded by{' '}
+          <a
+            href="https://blog.uncledao.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Uncle Dao
+          </a>
+        </p>
+      </footer>
     </main>
   )
 }

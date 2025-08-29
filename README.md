@@ -22,6 +22,8 @@ Welcome to AtelierOne, your personal digital art studio. This application allows
 
 You can try a live demo of AtelierOne here: [AtelierOne Demo](https://ai.studio/apps/drive/19QRF0ozhr44aVl6n5PPJ4Mg5U2rSXAwf)
 
+This application was developed by [Uncle Dao](https://blog.uncledao.com).
+
 ---
 
 ## AtelierOne: Xưởng Vẽ Chân Dung Phục Hưng Cá Nhân Của Bạn
@@ -40,3 +42,5 @@ Chào mừng bạn đến với AtelierOne, xưởng nghệ thuật kỹ thuật
 
 ### Demo
 Bạn có thể thử bản demo trực tiếp của AtelierOne tại đây: [AtelierOne Demo](https://ai.studio/apps/drive/19QRF0ozhr44aVl6n5PPJ4Mg5U2rSXAwf)
+
+Ứng dụng này được phát triển bởi [Uncle Dao](https://blog.uncledao.com).

@@ -111,6 +111,16 @@ main {
   align-items: center;
   justify-content: space-between;
 }
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.header-logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
 .header-container h1 {
   font-size: 1.2em;
 }
@@ -169,7 +179,7 @@ main {
 .timeline-point {
   width: 12px;
   height: 12px;
-  background-color: #000080;
+  background-color: #00aef0;
   border-radius: 50%;
   position: absolute;
   top: 28px;
@@ -185,18 +195,18 @@ main {
   align-items: flex-start;
 }
 .timeline-artists button {
-  font-size: 0.9em;
-  color: #800000;
+  font-size: 1.1em;
+  color: #aaa;
   transition: color 0.2s;
   padding: 2px;
   justify-content: flex-start;
 }
 .timeline-artists button:hover {
-  color: #e64a19;
+  color: #00aef0;
   text-decoration: underline;
 }
 .timeline-artists button.active {
-  color: #e64a19;
+  color: #00aef0;
   font-weight: bold;
   text-decoration: underline;
 }
@@ -259,7 +269,7 @@ main {
 }
 .side-panel h3 {
   font-size: 1em;
-  color: #e64a19;
+  color: #00aef0;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -305,7 +315,7 @@ main {
   transition: all 0.2s;
 }
 .prompt-options button.active {
-  background: #e64a19;
+  background: #00aef0;
   border-color: #fff;
   color: #fff;
 }
@@ -618,7 +628,7 @@ main {
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 5px;
-  background: #1e88e5;
+  background: #00aef0;
   transition: all 0.2s;
 }
 .button:hover {
@@ -645,7 +655,7 @@ main {
   position: sticky;
   right: 15px;
   align-self: center;
-  background: #e64a19;
+  background: #00aef0;
   border: 2px solid #fff;
   color: #fff;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
@@ -662,4 +672,20 @@ main {
   to {
     background-position: 200% 0;
   }
+}
+footer {
+  padding: 15px;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
+  border-top: 1px solid #333;
+  background-color: #000;
+}
+footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
