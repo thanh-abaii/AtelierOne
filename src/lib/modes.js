@@ -9,7 +9,7 @@ export default {
       masaccio: {
         name: 'Masaccio',
         lifespan: '(1401-1428)',
-        emoji: '🎨',
+        emoji: '👨‍🎨',
         prompts: [
           "Transform the person in the photo into a portrait with the solemn grandeur and realistic depth found in Masaccio's fresco, 'The Holy Trinity'.",
           "Render the person as a figure with sculptural weight and psychological gravity, as if painted by Masaccio with strong directional light.",
@@ -29,7 +29,7 @@ export default {
       piero: {
         name: 'Piero della Francesca',
         lifespan: '(c. 1415-1492)',
-        emoji: '🎨',
+        emoji: '🕊️',
         prompts: [
           "Reimagine the person in the photo as a serene and geometrically composed portrait, in the style of Piero della Francesca's 'The Baptism of Christ'.",
           "Style the portrait with the calm, monumental stillness and pale, clear light that is characteristic of Piero della Francesca's work.",
@@ -53,7 +53,7 @@ export default {
       davinci: {
         name: 'Leonardo da Vinci',
         lifespan: '(1452-1519)',
-        emoji: '🎨',
+        emoji: '⚙️',
         prompts: [
           "Render the person in the photo with the enigmatic smile and soft, smoky sfumato technique characteristic of Leonardo da Vinci's 'Mona Lisa'.",
           "Create a portrait that captures a fleeting psychological moment, using Leonardo's mastery of light and shadow (chiaroscuro) to model the form.",
@@ -73,7 +73,7 @@ export default {
       raphael: {
         name: 'Raphael',
         lifespan: '(1483-1520)',
-        emoji: '🎨',
+        emoji: '😇',
         prompts: [
           "Depict the person in the photo with the grace, harmony, and classical spirit of the figures in Raphael's masterpiece, 'School of Athens'.",
           "Create a portrait with the clarity, idealized beauty, and serene composition typical of the High Renaissance master Raphael.",
@@ -93,7 +93,7 @@ export default {
       titian: {
         name: 'Titian',
         lifespan: '(c. 1488-1576)',
-        emoji: '🎨',
+        emoji: '🌈',
         prompts: [
           "Paint the person in the photo with the rich colors, dramatic lighting, and vibrant energy of Titian's mythological scene, 'Bacchus and Ariadne'.",
           "Render the portrait using Titian's masterful Venetian School technique, emphasizing deep, rich colors and expressive, visible brushstrokes.",
@@ -117,7 +117,7 @@ export default {
       durer: {
         name: 'Dürer',
         lifespan: '(1471-1528)',
-        emoji: '🎨',
+        emoji: '✒️',
         prompts: [
           "Recreate the person in the photo as a detailed and introspective portrait, capturing the complex symbolism and masterful engraving style of Dürer's 'Melencolia I'.",
           "Create a Northern Renaissance portrait in the style of Albrecht Dürer, focusing on sharp, linear detail and intense psychological realism.",
@@ -137,7 +137,7 @@ export default {
       holbein: {
         name: 'Holbein',
         lifespan: '(c. 1497-1543)',
-        emoji: '🎨',
+        emoji: '👑',
         prompts: [
           "Make the person in the photo look like a portrait by Hans Holbein the Younger, capturing the meticulous realism and symbolic depth seen in 'The Ambassadors'.",
           "Create a portrait with the stark, unflinching realism and attention to texture of fabric and flesh characteristic of Holbein's court paintings.",
@@ -157,7 +157,7 @@ export default {
       bronzino: {
         name: 'Bronzino',
         lifespan: '(1503-1572)',
-        emoji: '🎨',
+        emoji: '✨',
         prompts: [
           "Style the person in the photo as an elegant, cool, and polished Mannerist portrait, reminiscent of the figures in Bronzino's 'Venus, Cupid, Folly, and Time'.",
           "Create a portrait with the porcelain-like skin, aristocratic detachment, and rich, enamel-like colors of a Bronzino masterpiece.",
@@ -177,7 +177,7 @@ export default {
       elgreco: {
         name: 'El Greco',
         lifespan: '(1541-1614)',
-        emoji: '🎨',
+        emoji: '🙏',
         prompts: [
           "Transform the person in the photo into a dramatic, elongated, and spiritual portrait with the expressive style of El Greco's 'The Burial of the Count of Orgaz'.",
           "Create a portrait using El Greco's distinctive, flickering brushwork and intense, mystical color palette to convey a sense of spiritual ecstasy.",

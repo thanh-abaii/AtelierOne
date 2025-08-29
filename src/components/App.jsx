@@ -37,6 +37,7 @@ export default function App() {
   const [focusedId, setFocusedId] = useState(null)
   const [didJustSnap, setDidJustSnap] = useState(false)
   const [showCustomPrompt, setShowCustomPrompt] = useState(false)
+  const [showInfoPanels, setShowInfoPanels] = useState(true)
   const videoRef = useRef(null)
 
   const currentArtist = getArtist(activeMode)
@@ -106,10 +107,29 @@ export default function App() {
     return ''
   }
 
+  const handleSetMode = key => {
+    setMode(key)
+    setShowInfoPanels(true) // Show panels when a new artist is selected
+  }
+
   return (
     <main>
-      <Timeline />
-      <div className="main-content-wrapper">
+      <div className="header-container">
+        <h1>AtelierOne</h1>
+        <div className="header-controls">
+          <button onClick={() => setShowInfoPanels(!showInfoPanels)}>
+            <span className="icon">
+              {showInfoPanels ? 'view_carousel' : 'info'}
+            </span>
+          </button>
+        </div>
+      </div>
+      <Timeline onSetMode={handleSetMode} />
+      <div
+        className={c('main-content-wrapper', {
+          'panels-hidden': !showInfoPanels
+        })}
+      >
         <div className="side-panel left">
           {activeMode !== 'custom' && currentArtist ? (
             <>
@@ -241,37 +261,6 @@ export default function App() {
           )}
         </div>
       </div>
-
-      {videoActive && (
-        <div className="modeSelector-container">
-          <ul className="modeSelector">
-            <li key="custom">
-              <button
-                className={c({active: activeMode === 'custom'})}
-                onClick={() => {
-                  setMode('custom')
-                  setShowCustomPrompt(true)
-                }}
-              >
-                <span>✏️</span> <p>Custom</p>
-              </button>
-            </li>
-            {Object.values(modes)
-              .map(period => Object.entries(period.artists))
-              .flat()
-              .map(([key, {name, emoji}]) => (
-                <li key={key}>
-                  <button
-                    onClick={() => setMode(key)}
-                    className={c({active: key === activeMode})}
-                  >
-                    <span>{emoji}</span> <p>{name}</p>
-                  </button>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )}
 
       <div className="results">
         <ul>

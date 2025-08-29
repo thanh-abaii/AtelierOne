@@ -103,10 +103,34 @@ main {
   display: flex;
   flex-direction: column;
 }
+.header-container {
+  padding: 5px 20px;
+  background: #000;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-container h1 {
+  font-size: 1.2em;
+}
+.header-controls {
+  display: flex;
+  gap: 10px;
+}
+.header-controls button {
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.header-controls button:hover {
+  background: #333;
+}
 .timeline-container {
   padding: 5px 40px;
   background: #000;
   border-bottom: 1px solid #333;
+  width: 100%;
 }
 .timeline {
   display: flex;
@@ -158,13 +182,14 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2px 10px;
+  align-items: flex-start;
 }
 .timeline-artists button {
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: #800000;
   transition: color 0.2s;
   padding: 2px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .timeline-artists button:hover {
   color: #e64a19;
@@ -183,6 +208,7 @@ main {
   gap: 20px;
   padding: 0 20px;
   overflow: hidden;
+  transition: padding 0.5s ease-in-out;
 }
 .center-column {
   flex: 0 0 50%;
@@ -190,6 +216,7 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease-in-out;
 }
 .side-panel {
   flex: 1;
@@ -202,6 +229,20 @@ main {
   justify-content: flex-start;
   padding-top: 5vh;
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+  width: 25%;
+}
+/* Focus mode styles */
+.main-content-wrapper.panels-hidden .side-panel {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  flex: 0;
+}
+.main-content-wrapper.panels-hidden .center-column {
+  flex: 0 0 70%;
+  max-width: 80vh;
 }
 .side-panel::-webkit-scrollbar {
   width: 4px;
@@ -347,56 +388,6 @@ main {
 }
 .videoControls .icon {
   font-size: 42px;
-}
-.modeSelector-container {
-  background: #000;
-  border-top: 1px solid #333;
-  padding: 10px 0;
-}
-.modeSelector {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  padding: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.modeSelector::-webkit-scrollbar {
-  height: 6px;
-}
-.modeSelector::-webkit-scrollbar-track {
-  background: #222;
-  border-radius: 3px;
-}
-.modeSelector::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 3px;
-}
-.modeSelector::-webkit-scrollbar-thumb:hover {
-  background: #777;
-}
-.modeSelector li {
-  position: relative;
-}
-.modeSelector button {
-  text-transform: uppercase;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: grayscale(1) brightness(0.7);
-  transition: all 0.2s;
-  white-space: nowrap;
-  gap: 5px;
-  position: relative;
-  background: transparent;
-  padding: 1px 7px;
-  border-radius: 3px;
-}
-.modeSelector button.active {
-  filter: grayscale(0) brightness(1) !important;
-  background: #fff;
-  color: #000;
 }
 .startButton {
   position: absolute;

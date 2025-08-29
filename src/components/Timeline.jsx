@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import useStore from '../lib/store'
-import {setMode} from '../lib/actions'
 import modes from '../lib/modes'
 
-export default function Timeline() {
+export default function Timeline({onSetMode}) {
   const activeMode = useStore.use.activeMode()
 
   return (
@@ -25,9 +24,9 @@ export default function Timeline() {
                 <button
                   key={artistKey}
                   className={activeMode === artistKey ? 'active' : ''}
-                  onClick={() => setMode(artistKey)}
+                  onClick={() => onSetMode(artistKey)}
                 >
-                  {artistData.name}
+                  {artistData.emoji} {artistData.name}
                 </button>
               ))}
             </div>
