@@ -1,0 +1,7 @@
+{
+  "name": "AtelierOne",
+  "description": "Your personal portrait atelier in the Renaissance style",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
